@@ -1,0 +1,49 @@
+.game__header__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game__header {
+    text-align: center;
+}
+
+.game__sub-header {
+    text-align: center;
+}
+
+.game__container {
+    width: 100vw;
+    height: 500px;
+
+    background-color: antiquewhite;
+}
+
+.word__area {
+    background-color: aliceblue;
+    width: 100vw;
+    height: 300px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+}
+
+.word__block {
+    position: absolute;
+    left: 10px;
+
+    width: 120px;
+    height: 80px;
+
+    background-color: bisque;
+
+    animation-name: word;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+}
+
+@keyframes word {
+    0% {left: -120px;}
+    100% {left: calc(100vw + 120px);}
+}
