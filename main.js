@@ -99,9 +99,14 @@ function RemoveBlocks() {
         let block = blocks[i];
         //console.log(blocks);
         //console.log(block.getBoundingClientRect().left + " : " + window.innerWidth + " + " + block.offsetWidth)
-        if(block.getBoundingClientRect().left >= window.innerWidth){
+        try{
+            if(block.getBoundingClientRect().left >= window.innerWidth){
             block.remove();
             console.log("Removed out of bounds block")
+        }
+        }
+        catch {
+            console.log("error when removing block");
         }
     }
 }
