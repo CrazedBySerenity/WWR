@@ -14,11 +14,19 @@
     <div class="game__header__container">
         <h1 class="game__header">Word word revolution</h1>
         <h3 class="game__sub-header">Press the correct translation for the appearing words!</h3>
-        <h4 id="score-text">Score: </h4>
+        <h4 id="score-text">Score: 0</h4>
     </div>
     <div class="game__container">
+
         <div class="word__area" id="word__area">
+            <div class="start-button" onclick="Start(this)">
+                Start
+            </div>
         </div>
+        <p class="tip-text music-tip">
+            Don't forget music! (Controls available in the bottom left)<br><br>
+            Tip! Keys 1-5 and Q-R can also be used to control the buttons below
+        </p>
         <div class="button__area">
             <div class="button" onclick="Click(1)">
                 förtrollad
@@ -50,5 +58,9 @@
         </div>
     </div>
     <script src="main.js"></script>
+    <audio controls>
+        <source src="Kawai Kitsune.mp3" type="audio/mp3">
+      Your browser does not support the audio element.
+      </audio> 
 </body>
 </html>

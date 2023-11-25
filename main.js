@@ -1,9 +1,10 @@
 let blocks = [];
 const wordArea = document.getElementById("word__area");
 const scoreText = document.getElementById("score-text");
+const root = document.querySelector(":root");
 
-const timerMax = 2000;
-const timerMin = 500;
+let timerMax = 2000;
+let timerMin = 500;
 
 const availableQuestions = [];
 const availableAnswers = [];
@@ -76,6 +77,20 @@ function Click(inputID) {
             }
         }
     }
+
+    if(score > 20){
+        timerMax = 1500;
+
+        document.documentElement.style.setProperty("--word-block-speed", "3s");
+    }
+
+    if(score > 50){
+        console.log("test")
+        timerMax = 1200;
+        timerMin = 200;
+
+        document.documentElement.style.setProperty("--word-block-speed", "2s");
+    }
 }
 
 function RemoveBlocks() {
@@ -125,5 +140,12 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
-SpawnBlock();
-setInterval(RemoveBlocks, 100)
+function Start(startButton) {
+    if(startButton){
+        startButton.remove();
+    }
+    SpawnBlock();
+    setInterval(RemoveBlocks, 100)
+}
+
+//Start();

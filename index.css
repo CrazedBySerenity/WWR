@@ -3,9 +3,11 @@
     --word-area-color: rgba(123, 96, 210, 0.749);
     --button-area-color: #7b60d2;
     --secondary-color: #4d30ab;
-    --accent-color: #ded7ff;
+    --accent-color: rgba(240, 46, 169, 0.718);
     --text-color: #070410;
     --secondary-text-color: #fff6f6;
+
+    --word-block-speed: 4s;
 }
 
 body {
@@ -14,6 +16,8 @@ body {
 /* 
     font-family: 'JetBrains Mono', monospace;
     font-family: 'Zen Maru Gothic', serif; */
+
+    user-select: none;
 }
 
 .game__header__container {
@@ -66,6 +70,7 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     
     border-radius: 100px;
 
@@ -86,7 +91,7 @@ body {
     background-color: var(--secondary-color);
 
     animation-name: word;
-    animation-duration: 3s;
+    animation-duration: var(--word-block-speed);
     animation-timing-function: linear;
     animation-fill-mode: forwards;
 
@@ -94,6 +99,8 @@ body {
 
     line-height: 60px;
     text-align: center;
+
+    user-select: none;
 
     font-size: 24px;
 
@@ -104,6 +111,39 @@ body {
     0% {left: -120px;}
     100% {left: calc(100vw + 120px);}
 }
+
+.start-button {
+    width: 360px;
+    height: 120px;
+
+    border-radius: 20px;
+    font-size: 52px;
+
+    background-color: var(--secondary-color);
+
+    text-align: center;
+    line-height: 120px;
+
+    color: var(--secondary-text-color);
+    transition: all 300ms ease-in-out;
+
+    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+}
+
+.start-button:hover{
+    transform: scale(1.05);
+    box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
+    font-size: 64px;
+}
+
+.tip-text {
+    font-size: 14px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+
+    text-align: center;
+}
+
 .button__area {
     display: flex;
     flex-direction: row;
@@ -123,14 +163,14 @@ body {
 }
 
 .button {
-    background-color: var(--accent-color);
+    background-color: var(--main-bg-color);
     min-width: 120px;
-    height: 40px;
+    height: 60px;
 
     user-select: none;
 
     text-align: center;
-    line-height: 40px;
+    line-height: 60px;
 
     display: flex;
     flex-direction: column;
@@ -142,9 +182,16 @@ body {
     border-radius: 14px;
     border-style: solid;
     border-color: var(--secondary-color);
-    border-width: 5px;
+    border-width: 3px;
 
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
     font-size: 18px;
+    transition: all 200ms;
+}
+
+.button:hover {
+    transform: scale(1.1);
+    line-height: 40px;
+
 }
