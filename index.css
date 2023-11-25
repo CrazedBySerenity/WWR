@@ -1,3 +1,21 @@
+:root {
+    --main-bg-color: #ded7ff;
+    --word-area-color: rgba(123, 96, 210, 0.749);
+    --button-area-color: #7b60d2;
+    --secondary-color: #4d30ab;
+    --accent-color: #ded7ff;
+    --text-color: #070410;
+    --secondary-text-color: #fff6f6;
+}
+
+body {
+    background-color: var(--main-bg-color);
+    font-family: 'JetBrains Mono', monospace;
+/* 
+    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Zen Maru Gothic', serif; */
+}
+
 .game__header__container {
     display: flex;
     flex-direction: column;
@@ -6,11 +24,27 @@
 
 .game__header {
     text-align: center;
+    font-family: 'Zen Maru Gothic', serif;
 }
 
 .game__sub-header {
     text-align: center;
+    font-family: 'Zen Maru Gothic', serif;
+
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .20em; /* Adjust as needed */
+    animation: 
+      typing 4s steps(80, end),
+      blink-caret .75s step-end infinite;
 }
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
 
 .game__container {
 
@@ -21,32 +55,49 @@
     width: 100vw;
     height: 500px;
 
-    background-color: antiquewhite;
+    background-color: var(--main-bg-color);
 }
 
 .word__area {
-    background-color: aliceblue;
-    width: 100vw;
+    background-color: var(--word-area-color);
+    width: 110vw;
     height: 300px;
 
     display: flex;
     flex-direction: row;
-    align-items: center; 
+    align-items: center;
+    
+    border-radius: 100px;
+
+    margin-bottom: 5px;
+
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .word__block {
     position: absolute;
     left: 10px;
 
-    width: 120px;
-    height: 80px;
+    width: 180px;
+    height: 60px;
 
-    background-color: pink;
+    border-radius: 10px;
+
+    background-color: var(--secondary-color);
 
     animation-name: word;
     animation-duration: 3s;
     animation-timing-function: linear;
     animation-fill-mode: forwards;
+
+    color: var(--secondary-text-color);
+
+    line-height: 60px;
+    text-align: center;
+
+    font-size: 24px;
+
+    box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
 }
 
 @keyframes word {
@@ -58,12 +109,42 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
+
     width: 50vw;
     height: 200px;
 
-    background-color: palegreen;
+    border-radius: 5px 5px 15px 15px;
+    margin-bottom: 10px;
+
+    background-color: var(--button-area-color);
+
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .button {
+    background-color: var(--accent-color);
+    min-width: 120px;
+    height: 40px;
 
+    user-select: none;
+
+    text-align: center;
+    line-height: 40px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-left: 5px;
+    margin-right: 5px;
+
+    border-radius: 14px;
+    border-style: solid;
+    border-color: var(--secondary-color);
+    border-width: 5px;
+
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    font-size: 18px;
 }
