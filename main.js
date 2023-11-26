@@ -1,13 +1,18 @@
 let blocks = [];
 const wordArea = document.getElementById("word__area");
 const scoreText = document.getElementById("score-text");
+const livesText = document.getElementById("lives-text");
+const restartButton = document.getElementById("restart-button");
 const root = document.querySelector(":root");
 
-let timerMax = 2000;
-let timerMin = 500;
+let timerMax = 5000;
+let timerMin = 3000;
 
 const availableQuestions = [];
 const availableAnswers = [];
+
+let spawnTimeout = undefined;
+let removeBlocksInterval = undefined;
 
 const answerDict = {
     "förtrollad": "enchanted",
@@ -37,9 +42,19 @@ const keyMapping = {
 }
 
 let score = 0;
+let lives = 3;
 
-let curID = 0;
+function Start(startButton) {
+    if(startButton){
+        startButton.style.display = "none";
+    }
+    SpawnBlock();
+    removeBlocksInterval = setInterval(RemoveBlocks, 100);
+}
 
+function Restart(){
+    window.location.reload();
+}
 
 function SpawnBlock() {
     console.log("Spawned element")
@@ -50,15 +65,13 @@ function SpawnBlock() {
     // newBlock.id = curID;
     // curID += 1;
     //blocks.push(newBlock);
-
     const newTimer = Math.random() * (timerMax - timerMin + 1) + timerMin;
-    setTimeout(SpawnBlock, newTimer);
+    spawnTimeout = setTimeout(SpawnBlock, newTimer);
 }
 
 function Click(inputID) {
     let answer = keyMapping[inputID];
     blocks = wordArea.childNodes;
-    console.log(blocks);
     if(blocks.length <= 0) return;
     const answerText = answer.trim();
     if(!answerDict[answerText]){
@@ -77,9 +90,15 @@ function Click(inputID) {
             }
         }
     }
+    if(score > 10){
+        document.documentElement.style.setProperty("--word-block-speed", "6s");
+        timerMax = 3000;
+        timerMin = 1200;
+    }
 
     if(score > 20){
         timerMax = 1500;
+        timerMin = 500;
 
         document.documentElement.style.setProperty("--word-block-speed", "3s");
     }
@@ -103,6 +122,9 @@ function RemoveBlocks() {
             if(block.getBoundingClientRect().left >= window.innerWidth){
             block.remove();
             console.log("Removed out of bounds block")
+            lives -= 1;
+            console.log(lives);
+            UpdateLives();
         }
         }
         catch {
@@ -113,6 +135,25 @@ function RemoveBlocks() {
 
 function UpdateScore() {
     scoreText.textContent = "Score: " + score;
+}
+
+function UpdateLives() {
+    livesText.textContent = "Lives: " + lives;
+    if(lives == 1){
+        livesText.style.color = "red";
+    }
+    else if(lives <= 0){
+        console.log("game over");
+        clearTimeout(spawnTimeout);
+        clearInterval(removeBlocksInterval);
+        restartButton.style.display = "block";
+
+        let wordBlocks = document.getElementsByClassName("word__block");
+        wordBlocks = Array.from(wordBlocks);
+        wordBlocks.forEach((block) => {
+            block.remove();
+        });
+    }
 }
 
 document.addEventListener('keydown', function(event) {
@@ -144,13 +185,5 @@ document.addEventListener('keydown', function(event) {
         Click(9);
     }
 });
-
-function Start(startButton) {
-    if(startButton){
-        startButton.remove();
-    }
-    SpawnBlock();
-    setInterval(RemoveBlocks, 100)
-}
 
 //Start();

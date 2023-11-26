@@ -14,13 +14,19 @@
     <div class="game__header__container">
         <h1 class="game__header">Word word revolution</h1>
         <h3 class="game__sub-header">Press the correct translation for the appearing words!</h3>
-        <h4 id="score-text">Score: 0</h4>
+        <div class="score__container">
+            <h4 id="score-text">Score: 0</h4>
+            <h4 id="lives-text">Lives: 3</h4>
+        </div>
     </div>
     <div class="game__container">
 
         <div class="word__area" id="word__area">
             <div class="start-button" onclick="Start(this)">
-                Start
+                Starta
+            </div>
+            <div class="start-button" id="restart-button" onclick="Restart(this)">
+                Starta om
             </div>
         </div>
         <p class="tip-text music-tip">

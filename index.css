@@ -7,7 +7,7 @@
     --text-color: #070410;
     --secondary-text-color: #fff6f6;
 
-    --word-block-speed: 4s;
+    --word-block-speed: 10s;
 }
 
 body {
@@ -44,11 +44,17 @@ body {
       blink-caret .75s step-end infinite;
 }
   
-  /* The typing effect */
-  @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-  }
+/* The typing effect */
+@keyframes typing {
+from { width: 0 }
+to { width: 100% }
+}
+
+.score__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 
 .game__container {
 
@@ -151,7 +157,8 @@ body {
     justify-content: center;
     flex-wrap: wrap;
 
-    width: 50vw;
+    width: 100%;
+    max-width: 700px;
     height: 200px;
 
     border-radius: 5px 5px 15px 15px;
@@ -194,4 +201,12 @@ body {
     transform: scale(1.1);
     line-height: 40px;
 
+}
+
+#lives-text {
+    margin-left: 20px;
+}
+
+#restart-button {
+    display: none;
 }
