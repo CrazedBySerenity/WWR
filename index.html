@@ -30,8 +30,8 @@
             </div>
         </div>
         <p class="tip-text music-tip">
-            Don't forget music! (Controls available in the bottom left)<br><br>
-            Tip! Keys 1-5 and Q-R can also be used to control the buttons below
+            Don't forget music! (Controls available at the bottom)<br><br>
+            <span class="control-tip">Tip! Keys 1-5 and Q-R can also be used to control the buttons below</span>
         </p>
         <div class="button__area">
             <div class="button" onclick="Click(1)">
@@ -62,12 +62,13 @@
                 djup
             </div>
         </div>
+        <audio controls loop>
+            <source src="Kawai Kitsune.mp3" type="audio/mp3">
+          Your browser does not support the audio element.
+          </audio> 
     </div>
     <script src="main.js"></script>
-    <audio controls loop>
-        <source src="Kawai Kitsune.mp3" type="audio/mp3">
-      Your browser does not support the audio element.
-      </audio> 
+
       <!-- Add a selection wheel for different music tracks -->
 </body>
 </html>
