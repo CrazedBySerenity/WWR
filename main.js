@@ -15,30 +15,36 @@ let spawnTimeout = undefined;
 let removeBlocksInterval = undefined;
 
 const answerDict = {
-    "förtrollad": "enchanted",
+    "Viktor": "Rat",
+    "Agnes": "Kid",
+    "Alice": "Goblin",
+    // "förtrollad": "enchanted",
     // "rymma":"accommodate",
-    "förutse": "anticipate",
+    // "förutse": "anticipate",
     // "slag": "blow",
-    "erkänna": "confess",
-    "lura": "fool",
-    "egenskap": "trait",
-    "skona": "spare",
-    "invecklad": "convoluted",
-    "beständig": "persistent",
-    "djup": "profound",
+    // "erkänna": "confess",
+    // "lura": "fool",
+    // "egenskap": "trait",
+    // "skona": "spare",
+    // "invecklad": "convoluted",
+    // "beständig": "persistent",
+    // "djup": "profound",
     // "trampa ner": "trample",
 };
 
 const keyMapping = {
-    1: "förtrollad",
-    2: "förutse",
-    3: "erkänna",
-    4: "lura",
-    5: "egenskap",
-    6: "skona",
-    7: "invecklad",
-    8: "beständig",
-    9: "djup",
+    1: "Viktor",
+    2: "Agnes",
+    3: "Alice",
+    // 1: "förtrollad",
+    // 2: "förutse",
+    // 3: "erkänna",
+    // 4: "lura",
+    // 5: "egenskap",
+    // 6: "skona",
+    // 7: "invecklad",
+    // 8: "beständig",
+    // 9: "djup",
 }
 
 let score = 0;
@@ -61,6 +67,7 @@ function SpawnBlock() {
     const newBlock = document.createElement("div");
     wordArea.append(newBlock);
     newBlock.classList.add("word__block");
+    newBlock.classList.add("word__block--move");
     newBlock.textContent = Object.entries(answerDict)[Math.floor(Math.random() * Object.keys(answerDict).length)][1];
     // newBlock.id = curID;
     // curID += 1;
@@ -83,14 +90,25 @@ function Click(inputID) {
         {
             let block = blocks[i];
             if(block.textContent == questionText.trim()){
-                block.remove();
+                // Remove after a timeout, add animation inbetween
+                let position = block.getBoundingClientRect().left;
+                let anim = Math.floor(Math.random() * 2);
+                let animName = "word__block--destroy" + parseInt(anim);
+                console.log(typeof animName);
+                console.log(animName)
+                block.classList.replace("word__block--move", animName);
+                block.style.left = position + "px";
+                console.log("destroyed block");
+                setTimeout(() => {
+                    block.remove();
+                }, 290)
                 score += 1;
                 console.log(score);
                 UpdateScore();
             }
         }
     }
-    if(score > 10){
+    if(score > 2){
         document.documentElement.style.setProperty("--word-block-speed", "6s");
         timerMax = 3000;
         timerMin = 1200;

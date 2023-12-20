@@ -20,6 +20,17 @@ body {
     user-select: none;
 }
 
+.character {
+    height: 100px;
+    margin: -70px;
+
+    transform: translate(10px, -40px);
+}
+
+.girl-1 {
+
+}
+
 .game__header__container {
     display: flex;
     flex-direction: column;
@@ -94,11 +105,6 @@ to { width: 100% }
 
     background-color: var(--secondary-color);
 
-    animation-name: word;
-    animation-duration: var(--word-block-speed);
-    animation-timing-function: linear;
-    animation-fill-mode: forwards;
-
     color: var(--secondary-text-color);
 
     line-height: 60px;
@@ -109,6 +115,36 @@ to { width: 100% }
     font-size: 24px;
 
     box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
+}
+
+.word__block--move {
+    animation-name: word;
+    animation-duration: var(--word-block-speed);
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+.word__block--destroy0 {
+    animation: destroy0 300ms ease-in;
+}
+
+.word__block--destroy1 {
+    animation: destroy1 300ms ease-in;
+}
+
+
+@keyframes destroy0 {
+    0% {transform: scale(1) rotate(0deg);}
+    100% {transform: scale(0) rotate(360deg);}
+}
+
+@keyframes destroy1 {
+    0% {transform: scale(1) rotate(0deg);}
+    20% {transform: rotate(-45deg);}
+    40% {transform: rotate(45deg);}
+    60% {transform: rotate(-45deg);}
+    80% {transform: rotate(45deg);}
+    100% {transform: scale(0.8) rotate(-45deg);}
 }
 
 @keyframes word {
@@ -137,7 +173,22 @@ to { width: 100% }
 .start-button:hover{
     transform: scale(1.05);
     box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
-    font-size: 64px;
+    font-size: 60px;
+
+    animation: start-button-hover 1s linear infinite reverse;
+}
+
+@keyframes start-button-hover {
+    0% {
+        box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+    }
+
+    50% {
+        box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
+    }
+    100% {
+        box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+    }
 }
 
 .tip-text {
@@ -169,8 +220,8 @@ to { width: 100% }
 
 .button {
     background-color: var(--main-bg-color);
-    min-width: 120px;
-    height: 60px;
+    min-width: 180px;
+    height: 100px;
 
     user-select: none;
 
@@ -178,11 +229,14 @@ to { width: 100% }
     line-height: 60px;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-around;
 
     margin-left: 5px;
     margin-right: 5px;
+
+    padding-right: 5px;
 
     border-radius: 14px;
     border-style: solid;
@@ -199,6 +253,64 @@ to { width: 100% }
     transform: scale(1.1);
     line-height: 40px;
 
+}
+
+.square {
+    width: 35px;
+    height: 35px;
+    background-color: black;
+    border-radius: 5px;
+}
+
+.circle {
+    width: 40px;
+    height: 40px;
+    background-color: black;
+    border-radius: 50%;
+}
+
+.triangle {
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    
+    border-bottom: 35px solid black;
+
+    border-radius: 5px;
+}
+
+.speech-bubble {
+    position: absolute;
+
+    transform: translate(-40px, -110px) scale(1.7);
+/* 
+    visibility: hidden; */
+}
+
+.speech-bubble--oval {
+    width: 80px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+
+    font-size: auto;
+    text-align: center;
+
+    z-index: 2;
+}
+
+.speech-bubble--tail {
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    
+    border-bottom: 35px solid white;
+
+    transform: rotate(-35deg) translate(15px ,-20px);
+
+    z-index: 1;
 }
 
 #lives-text {
