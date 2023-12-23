@@ -8,12 +8,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Zen+Maru+Gothic:wght@700&display=swap" rel="stylesheet">
-    <title>Word word revolution</title>
+    <title>God jul!</title>
 </head>
 <body>
     <div class="game__header__container">
-        <h1 class="game__header">Word word revolution</h1>
-        <h3 class="game__sub-header">Press the correct translation for the appearing words!</h3>
+        <h1 class="game__header">God jul! Ha det kul!</h1>
+        <h3 class="game__sub-header">Press the family member with the corresponding color for the blocks that appear!</h3>
         <div class="score__container">
             <h4 id="score-text">Score: 0</h4>
             <h4 id="lives-text">Lives: 3</h4>
@@ -23,10 +23,10 @@
 
         <div class="word__area" id="word__area">
             <div class="start-button" onclick="Start(this)">
-                Starta
+                Start
             </div>
             <div class="start-button" id="restart-button" onclick="Restart(this)">
-                Starta om
+                Try again
             </div>
         </div>
         <p class="tip-text music-tip">
@@ -36,34 +36,48 @@
             </span>
         </p>
         <div class="button__area">
-            <div class="button" onclick="Click(1)">
-                <img class="character" src="images/dino-1.png">
+            <div class="button viktor-color" onclick="Click(1)">
+                <img class="character" src="images/detective.png">
                 Viktory
-                <div class="square"></div>
-                <div class="speech-bubble">
+                <!-- <div class="square">
+
+                </div> -->
+                <!-- <div class="speech-bubble">
                     <div class="speech-bubble--oval">
                         
                     </div>
                     <div class="speech-bubble--tail"></div>
-                </div>
+                </div> -->
             </div>
-            <div class="button" onclick="Click(2)">
-                <img class="character girl-1" src="images/girl-1.png">
+            <div class="button agnes-color" onclick="Click(2)">
+                <img class="character girl-1" src="images/girl-2.png">
                 Ägnes
-                <div class="circle">
+                <!-- <div class="circle">
 
-                </div>
+                </div> -->
             </div>
-            <div class="button" onclick="Click(3)">
+            <div class="button alice-color" onclick="Click(3)">
                 <img class="character angel-1" src="images/angel-1.png">
                 Aleasy
-                <div class="triangle">
+                <!-- <div class="triangle">
 
-                </div>
+                </div> -->
+            </div>
+            <div class="button hampus-color" onclick="Click(4)">
+                <img class="character angel-1" src="images/dino-1.png">
+                HampZ
+            </div>
+            <div class="button anders-color" onclick="Click(5)">
+                <img class="character angel-1" src="images/business-man.png">
+                AnderZ
+            </div>
+            <div class="button stina-color" onclick="Click(6)">
+                <img class="character angel-1" src="images/girl-1.png">
+                Zteina
             </div>
         </div>
         <audio controls loop>
-            <source src="Kawai Kitsune.mp3" type="audio/mp3">
+            <source src="Sunflower Dance Party.mp3" type="audio/mp3">
           Your browser does not support the audio element.
           </audio> 
     </div>

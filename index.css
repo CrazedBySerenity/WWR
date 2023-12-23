@@ -24,7 +24,7 @@ body {
     height: 100px;
     margin: -70px;
 
-    transform: translate(10px, -40px);
+    transform: translate(-5px, 0px);
 }
 
 .girl-1 {
@@ -202,7 +202,7 @@ to { width: 100% }
 .button__area {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: none;
     justify-content: center;
     flex-wrap: wrap;
 
@@ -321,7 +321,29 @@ to { width: 100% }
     display: none;
 }
 
+.viktor-color {
+    background-color: rgb(186,255,201);
+}
 
+.agnes-color {
+    background-color: rgb(186,225,255);
+}
+
+.alice-color {
+    background-color: rgb(255,255,186);
+}
+
+.hampus-color {
+    background-color:  	rgb(255,223,186);
+}
+
+.stina-color {
+    background-color: rgb(220,194,224);
+}
+
+.anders-color {
+    background-color: rgb(255,179,186);
+}
 
 @media screen and (max-width: 800px) {
     .game__header {
@@ -333,6 +355,11 @@ to { width: 100% }
         white-space: normal;
         overflow: visible;
         animation: none;
+    }
+
+    .character {
+        height: 40px;
+        margin: -10px;
     }
 
     .start-button {
@@ -373,8 +400,8 @@ to { width: 100% }
 
     .button {
         min-width: 80px;
-        height: 40px;
-        font-size: 12px;
+        height: 60px;
+        font-size: 16px;
         
         line-height: 40px;
     }
